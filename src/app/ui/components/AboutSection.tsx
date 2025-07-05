@@ -1,7 +1,9 @@
+
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import Image from "next/image";
 
 const timeline = [
   {
@@ -36,60 +38,94 @@ export default function AboutSection() {
   const gradient = useTransform(
     scrollYProgress,
     [0, 1],
-    ["#3b82f6", "#ef4444"] // blue to red
+    ["#3b82f6", "#ef4444"]
   );
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-   
-      <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center">
-        <img
-          src="/anton-cat.png"
-          alt="Portrait of Enai"
-          className="w-60 rounded-xl mb-10 md:mb-0 md:mr-10"
-        />
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center">About Me</h2>
+    <section id="about" className="py-24 px-6 bg-black text-white">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
+        {/* Left: Image & Intro */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center md:text-left space-y-4"
+        >
+          <Image
+            src="/anton-cat.png"
+            alt="Portrait of Enai"
+            width={240}
+            height={240}
+            className="mx-auto md:mx-0 rounded-2xl"
+          />
+          <h2 className="text-3xl font-bold mt-6">About Me</h2>
+          <p className="text-gray-300 text-sm max-w-md mx-auto md:mx-0">
+            Doctor turned technologist — building stunning, scalable web
+            interfaces with creativity and precision. Bridging design, empathy,
+            and code for real-world impact.
+          </p>
+        </motion.div>
 
-          <div ref={ref} className="relative pl-10">
-            {/* Animated Gradient Line */}
-            <motion.div
-              className="absolute left-4 top-0 bottom-0 w-1 rounded-full"
-              style={{
-                background: gradient,
-              }}
-            />
+        {/* Right: Timeline */}
+        <div className="relative" ref={ref}>
+          {/* Animated Vertical Gradient Line */}
+          <motion.div
+            className="absolute left-4 top-0 bottom-0 w-1 rounded-full"
+            style={{ background: gradient }}
+          />
 
-            <div className="space-y-10">
-              {timeline.map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: i * 0.15 }}
-                  viewport={{ once: true }}
-                  className="relative flex items-center items-start gap-6"
+          <div className="pl-10 space-y-12">
+            {timeline.map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                viewport={{ once: true }}
+                className="relative flex items-start gap-4"
+              >
+                 <div className="hidden md:flex items-start gap-4">
+                {/* Dot on the line */}
+                <div className="absolute left-[-1.5px] top-1.5 w-3 h-3 rounded-full bg-white shadow-[0_0_10px_3px_#fff]" />
+
+                {/* Content */}
+                <div className="ml-6">
+                  <h3 className="text-base font-semibold">{item.title}</h3>
+                  <p className="text-sm text-gray-400">{item.desc}</p>
+                </div>
+
+                {/* Year */}
+                <div className="ml-auto text-xs text-gray-500 min-w-[50px] text-right">
+                  {item.year}
+                </div>
+                </div>
+                 {/* Mobile Accordion */}
+                 <div
+                  className="md:hidden bg-white/10 backdrop-blur-md border border-white/10 p-4 rounded-xl"
+                  onClick={() => setOpenIndex(openIndex === i ? null : i)}
                 >
-                  {/* Glowing Dot */}
-                  <span className="absolute top-1.5 w-2 h-2 rounded-full bg-white shadow-[0_0_10px_2px_rgba(255,255,255,0.5)] z-10" />
-
-                  {/* Timeline Content */}
-                  <div className="ml-6 flex-1">
-                    <h3 className="text-lg font-semibold text-white">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-gray-400">{item.desc}</p>
+                  <div className="flex justify-between items-center cursor-pointer gap-4">
+                    <h3 className="text-sm font-semibold">{item.title}</h3>
+                    <span className="text-xs text-gray-400">{item.year}</span>
                   </div>
-
-                  {/* Right-aligned Date */}
-                  <div className="text-xs text-gray-400 min-w-[60px] text-right">
-                    {item.year}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+                  {openIndex === i && (
+                    <motion.p
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      transition={{ duration: 0.3 }}
+                      className="text-xs text-gray-400 mt-2"
+                    >
+                      {item.desc}
+                    </motion.p>
+                  )}
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
-   
+    </section>
   );
 }

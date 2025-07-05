@@ -1,159 +1,204 @@
-// // pages/index.tsx
-// import Image from "next/image";
-// import Link from "next/link";
-
-// export default function Home() {
-//   return (
-//     <main className="min-h-screen bg-white text-gray-900 font-sans">
-//       {/* Hero Section */}
-//       <section className="flex flex-col items-center justify-center h-screen text-center px-6">
-//         <h1 className="text-4xl font-bold mb-4">Ige-Edaba Enai</h1>
-//         <h2 className="text-xl mb-4">Front-End Developer</h2>
-//         <p className="max-w-md text-gray-600 mb-6">
-//           A doctor and visual artist turned creative developer, passionate about
-//           merging design, logic, and user-focused experiences.
-//         </p>
-//         <Link
-//           href="#projects"
-//           className="px-6 py-3 bg-blue-600 text-white rounded-xl shadow hover:bg-blue-700"
-//         >
-//           View Projects
-//         </Link>
-//       </section>
-
-//       {/* About Section */}
-//       <section className="px-6 py-16 bg-gray-50 text-center">
-//         <h3 className="text-2xl font-semibold mb-4">About Me</h3>
-//         <p className="max-w-xl mx-auto text-gray-700">
-//           I blend medical precision, artistic intuition, and web technologies to
-//           build pixel-perfect and high-performance user interfaces. I'm
-//           currently focused on React, TypeScript, and full-stack projects using
-//           Prisma and PostgreSQL.
-//         </p>
-//       </section>
-
-//       {/* Tech Stack */}
-//       <section className="px-6 py-16 text-center">
-//         <h3 className="text-2xl font-semibold mb-8">Tech Stack</h3>
-//         <div className="flex flex-wrap justify-center gap-4 text-sm">
-//           {[
-//             "HTML",
-//             "CSS",
-//             "JavaScript",
-//             "TypeScript",
-//             "React",
-//             "Next.js",
-//             "TailwindCSS",
-//             "PostgreSQL",
-//             "Prisma",
-//             "Figma",
-//           ].map((tech) => (
-//             <span key={tech} className="bg-gray-200 px-4 py-2 rounded-full">
-//               {tech}
-//             </span>
-//           ))}
-//         </div>
-//       </section>
-
-//       {/* Projects */}
-//       <section id="projects" className="px-6 py-16 bg-gray-100">
-//         <h3 className="text-2xl font-semibold text-center mb-10">Projects</h3>
-//         <div className="grid gap-8 md:grid-cols-2">
-//           {[1, 2, 3].map((i) => (
-//             <div key={i} className="bg-white p-6 rounded-xl shadow-md">
-//               <div className="w-full h-40 bg-gray-300 rounded mb-4" />
-//               <h4 className="text-lg font-semibold mb-2">Project Title {i}</h4>
-//               <p className="text-sm text-gray-600 mb-4">
-//                 A brief description of the project highlighting tools used,
-//                 goals, and outcomes. Designed for recruiters to understand
-//                 technical and design thinking.
-//               </p>
-//               <Link href="#" className="text-blue-600 hover:underline text-sm">
-//                 View Project →
-//               </Link>
-//             </div>
-//           ))}
-//         </div>
-//       </section>
-
-//       {/* Contact Section */}
-//       <section className="px-6 py-20 text-center">
-//         <h3 className="text-2xl font-semibold mb-4">Let’s Work Together</h3>
-//         <p className="text-gray-600 mb-6">
-//           I’m open to front-end or full-stack roles, freelance opportunities, or
-//           creative collaborations.
-//         </p>
-//         <div className="flex justify-center gap-4">
-//           <Link href="#" className="text-blue-600 hover:underline">
-//             GitHub
-//           </Link>
-//           <Link href="#" className="text-blue-600 hover:underline">
-//             LinkedIn
-//           </Link>
-//           <Link
-//             href="mailto:enai@example.com"
-//             className="text-blue-600 hover:underline"
-//           >
-//             Email Me
-//           </Link>
-//         </div>
-//       </section>
-
-//       {/* Footer */}
-//       <footer className="text-center py-6 text-sm text-gray-400">
-//         © 2025 Ige-Edaba Enai. All rights reserved.
-//       </footer>
-//     </main>
-//   );
-// }
-import ProjectCard from "@/app/ui/components/ProjectCard";
-import PhotoCarousel from "@/app/ui/components/PhotoCarousel";
+import AboutSection from "@/app/ui/components/AboutSection";
+import ContactSection from "@/app/ui/components/ContactSection";
+import Navbar from "./ui/components/nav-bar";
+import PhotoCarousel from "./ui/components/PhotoCarousel";
+import SlideInSection from "./ui/SlideInSection";
+import Link from "next/link";
 
 export default function HomePage() {
-  const projects = [
-    {
-      title: "Online Cinema",
-      desc: "Feature-rich streaming UI with authentication and media UI.",
-      tag: "Design • Web",
-      image: "/projects/project1.png",
-    },
-    {
-      title: "E-Shop",
-      desc: "Secure device store with Stripe, filtering, and admin dashboard.",
-      tag: "E-commerce • Tech",
-      image: "/projects/project2.png",
-    },
-  ];
-
   return (
-    <section className="min-h-screen bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] text-white px-4 py-20">
-      <div className="max-w-6xl mx-auto space-y-20">
-        <h2 className="text-4xl font-bold mb-10">My Projects</h2>
-        <div className="grid md:grid-cols-2 gap-14">
-          {projects.map((proj, i) => (
-            <ProjectCard key={i} {...proj} />
-          ))}
-        </div>
-
-        <div>
-          <h2 className="text-4xl font-bold mb-6">Photography</h2>
-          <PhotoCarousel />
-        </div>
-
-        <div>
-          <h2 className="text-4xl font-bold mb-6">My Cat</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-            {[1, 2, 3, 4, 5, 6].map((n) => (
+    <>
+      <Navbar />
+      <main
+        className="text-white min-h-screen font-sans bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/images/bg-1.jpg')" }}
+      >
+        {/* Hero Section */}
+        <section
+          className="relative bg-cover bg-center bg-no-repeat flex flex-col items-center text-center px-4 text-black"
+          style={{ backgroundImage: "url('/images/paper-bg.jpg')" }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-white/10 backdrop-blur-sm" />
+          <div className="relative z-10 flex flex-col min-h-screen gap-5 md:flex-row items-center justify-center">
+            <SlideInSection direction="left">
+              <div className="w-full text-left">
+                <h1 className="text-5xl md:text-7xl font-extrabold leading-tight bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
+                  Ige-Edaba Enai
+                </h1>
+                <h2 className="text-xl md:text-2xl mt-4 text-gray-700 font-medium">
+                  Software Engineer · Front-End Developer · Visual Thinker
+                </h2>
+                <p className="mt-6 text-lg text-gray-800 max-w-xl">
+                  Doctor turned technologist — building stunning, scalable web
+                  interfaces with creativity and precision. Bridging design,
+                  empathy, and code for real-world impact.
+                </p>
+                <Link href="#projects">
+                  <button className="mt-6 px-6 py-2 bg-gradient-to-r from-red-600 via-purple-600 to-blue-700 text-white rounded-full shadow-xl hover:opacity-90 transition-all">
+                    View My Projects
+                  </button>
+                </Link>
+              </div>
+            </SlideInSection>
+            <SlideInSection direction="right">
               <img
-                key={n}
-                src={`/cat/cat${n}.jpg`}
-                alt={`Cat ${n}`}
-                className="rounded-xl object-cover h-60 w-full"
+                src="/images/hero-image.jpeg"
+                alt="Hero"
+                className="w-full mt-10 md:max-w-md rounded-xl shadow-2xl"
               />
+            </SlideInSection>
+          </div>
+        </section>
+
+        {/* About Section */}
+        <section id="about" className="py-24 px-4 bg-black text-white">
+          <AboutSection />
+        </section>
+
+        {/* Skills Section */}
+        <section
+          id="skills"
+          className="py-24 px-4 bg-gradient-to-bl from-black to-gray-900"
+        >
+          <h2 className="text-4xl font-bold text-center text-white mb-12">
+            My Skills
+          </h2>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 justify-items-center max-w-6xl mx-auto">
+            {[
+              {
+                name: "TypeScript",
+                glow: "shadow-[0_0_25px_#3b82f6]",
+                border: "border-blue-400",
+                image: "/images/TS-logo.png",
+              },
+              {
+                name: "Node.js",
+                glow: "shadow-[0_0_25px_#10b981]",
+                border: "border-green-500",
+                image: "/images/node-js-logo.png",
+              },
+              {
+                name: "React",
+                glow: "shadow-[0_0_25px_#38bdf8]",
+                border: "border-sky-400",
+                image: "/images/react-logo.png",
+              },
+              {
+                name: "Next.js",
+                glow: "shadow-[0_0_25px_#d1d5db]",
+                border: "border-gray-400",
+                image: "/images/next-logo.png",
+              },
+              {
+                name: "JavaScript",
+                glow: "shadow-[0_0_25px_#facc15]",
+                border: "border-yellow-300",
+                image: "/images/JS-logo.png",
+              },
+              {
+                name: "Figma",
+                glow: "shadow-[0_0_25px_#ec4899]",
+                border: "border-pink-500",
+                image: "/images/figma-logo.png",
+              },
+              {
+                name: "PostgreSQL",
+                glow: "shadow-[0_0_25px_#60a5fa]",
+                border: "border-blue-300",
+                image: "/images/postgresql-logo.png",
+              },
+              {
+                name: "MongoDB",
+                glow: "shadow-[0_0_25px_#34d399]",
+                border: "border-emerald-400",
+                image: "/images/mongoDB.png",
+              },
+            ].map(({ name, glow, border, image }) => (
+              <div
+                key={name}
+                className={`backdrop-blur-lg bg-white/10 ${border} border-2 rounded-xl text-center w-full max-w-[120px] p-6 text-white transition-transform transform hover:scale-105 ${glow} hover:shadow-[0_0_25px_white]`}
+              >
+                <img
+                  src={image}
+                  alt={name}
+                  className="w-16 h-16 mx-auto rounded mb-4"
+                />
+                <p className="text-sm font-medium">{name}</p>
+              </div>
             ))}
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
+
+        {/* Projects Section */}
+        <section
+          id="projects"
+          className="py-24 px-4 bg-gradient-to-tl from-black to-gray-900 text-white"
+        >
+          <h2 className="text-4xl font-bold text-center mb-16">My Projects</h2>
+
+          <div className="max-w-6xl mx-auto space-y-24">
+            {/* Project Example */}
+            {[1, 2].map((num, idx) => (
+              <div
+                key={num}
+                className={`grid grid-cols-5 gap-10 items-center ${
+                  idx % 2 !== 0 ? "md:flex-row-reverse" : ""
+                }`}
+              >
+                <div className="col-span-5 md:col-span-3">
+                  <SlideInSection direction={idx % 2 === 0 ? "right" : "left"}>
+                    <img
+                      src="/images/404-found.png"
+                      alt="Project Screenshot"
+                      className="rounded-xl w-full h-auto transition duration-300 hover:shadow-[0_0_40px_#9333ea]"
+                    />
+                  </SlideInSection>
+                </div>
+
+                <div className="col-span-5 md:col-span-2 bg-black/20 backdrop-blur-lg rounded-2xl p-6 shadow-xl">
+                  <SlideInSection direction={idx % 2 === 0 ? "left" : "right"}>
+                    <span className="text-sm uppercase text-purple-300 mb-1 block">
+                      Fullstack • UI
+                    </span>
+                    <h3 className="text-2xl font-semibold mb-3">
+                      Modern Web App
+                    </h3>
+                    <p className="text-sm text-gray-300 mb-4">
+                      A scalable, responsive web app with authentication, data
+                      visualization, and dynamic routing — powered by React,
+                      Next.js, and PostgreSQL.
+                    </p>
+                    <button className="px-5 py-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-sm font-semibold shadow-md hover:opacity-90">
+                      See more
+                    </button>
+                  </SlideInSection>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Hobbies Section */}
+        <section
+          id="hobby"
+          className="min-h-screen bg-black text-white px-4 py-24"
+        >
+          <div className="max-w-6xl mx-auto space-y-20">
+            <h2 className="text-4xl font-bold mb-6">Art & Photography</h2>
+            <PhotoCarousel />
+            <div>
+              <h2 className="text-4xl font-bold mb-6">Movies I Love</h2>
+              <PhotoCarousel />
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <section id="contact">
+          <ContactSection />
+        </section>
+      </main>
+    </>
   );
 }
