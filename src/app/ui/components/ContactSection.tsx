@@ -1,94 +1,29 @@
-// import Image from "next/image";
+"use client";
 
-// export default function ContactSection() {
-//   return (
-//     <section className="bg-gradient-to-tr from-indigo-900 to-black text-white px-4 py-20">
-//       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
-//         {/* Left – Cat & Handwriting */}
-//         <div className="relative text-center md:text-left">
-//           <Image
-//             src="/images/hero-image.jpeg"
-//             alt="image of Enai front-end dev"
-//             width={400}
-//             height={400}
-//             className="mx-auto md:mx-0"
-//           />
-//           <p className="text-white font-handwritten text-xl mt-4">
-//             I am waiting for your letters! →
-//           </p>
-//         </div>
-
-//         {/* Right – Form */}
-//         <div className="relative bg-white/10 backdrop-blur-xl p-8 rounded-3xl shadow-lg text-white">
-//           <h3 className="text-2xl font-bold mb-6">Get in touch today</h3>
-//           <form
-//             action="https://formspree.io/f/mblybnnv"
-//             method="POST"
-//             className="space-y-4"
-//           >
-//             <div className="grid grid-cols-2 gap-4">
-//               <input
-//                 type="text"
-//                 placeholder="Your name"
-//                 className="bg-black/30 px-4 py-2 rounded-xl border border-white/20 placeholder-white text-white"
-//               />
-//               <input
-//                 type="email"
-//                 placeholder="Your email"
-//                 className="bg-black/30 px-4 py-2 rounded-xl border border-white/20 placeholder-white text-white"
-//               />
-//             </div>
-//             <textarea
-//               placeholder="Please type your message here..."
-//               rows={4}
-//               className="w-full bg-black/30 px-4 py-2 rounded-xl border border-white/20 placeholder-white text-white"
-//             />
-//             <button
-//               type="submit"
-//               className="px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-white font-semibold shadow-md hover:opacity-90"
-//             >
-//               Send message
-//             </button>
-//           </form>
-
-//           {/* Bottom cat peeking */}
-//           <Image
-//             src="/images/cat-peek.png"
-//             alt="Peek cat"
-//             width={80}
-//             height={80}
-//             className="absolute -bottom-8 right-10"
-//           />
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
-
-"use client"
 import { useState } from "react";
-import {motion} from "framer-motion"
+import { motion } from "framer-motion";
 import Image from "next/image";
 import toast from "react-hot-toast";
+import Link from "next/link";
+import { Github, Linkedin, Mail } from "lucide-react";
+import { yieldToMain } from "@/app/utils/yield";
 
 export default function ContactSection() {
   const [formStatus, setFormStatus] = useState("idle");
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const form = e.target;
+    const form = e.currentTarget;
     const data = new FormData(form);
 
     try {
       const res = await fetch("https://formspree.io/f/mblybnnv", {
         method: "POST",
         body: data,
-        headers: {
-          Accept: "application/json",
-        },
+        headers: { Accept: "application/json" },
       });
+
+      await yieldToMain();
 
       if (res.ok) {
         toast.success("Message sent successfully! 🎉");
@@ -103,29 +38,65 @@ export default function ContactSection() {
   };
 
   return (
-    <section className=" text-white px-4 py-24">
+    <motion.section
+      className="text-white px-4 py-24 "
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      id="contact"
+    >
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-center">
-        {/* Left – Image & Note */}
+        {/* Left – Image & CTA */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="relative text-center md:text-left"
+          className="text-center md:text-left"
         >
           <Image
             src="/images/hero-image.jpeg"
-            alt="Portrait of Enai, front-end developer"
+            alt="Portrait of Enai"
             width={400}
             height={400}
+            loading="lazy"
             className="mx-auto md:mx-0 rounded-xl shadow-lg"
           />
           <p className="text-white font-handwritten text-2xl mt-6">
-            I’m waiting for your letter → 
+            I’m waiting for your letter →
           </p>
+
+          {/* Social Links */}
+          <div className="flex justify-center md:justify-start gap-6 text-lg mt-6">
+            <Link
+              href="mailto:enaicathy@gmail.com"
+              title="Send me an email"
+              className="hover:text-purple-400 transition"
+            >
+              <Mail size={20} />
+            </Link>
+            <Link
+              href="https://github.com/enai-cathy"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Visit GitHub"
+              className="hover:text-purple-400 transition"
+            >
+              <Github size={20} />
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/enaikato-ige-edaba-5b9538216/"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Visit LinkedIn"
+              className="hover:text-purple-400 transition"
+            >
+              <Linkedin size={20} />
+            </Link>
+          </div>
         </motion.div>
 
-        {/* Right – Form Card */}
+        {/* Right – Form */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -133,14 +104,21 @@ export default function ContactSection() {
           viewport={{ once: true }}
           className="relative bg-white/10 backdrop-blur-2xl p-10 rounded-3xl shadow-2xl text-white"
         >
-          <h3 className="text-3xl font-bold mb-6">Let's Build Something Awesome</h3>
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <h3 className="text-3xl font-bold mb-6">
+            Let&apos;s Build Something Awesome
+          </h3>
+
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-5"
+            aria-label="Contact form"
+          >
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.5 }}
               viewport={{ once: true }}
-              className="grid grid-cols-2 gap-4"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-4"
             >
               <input
                 type="text"
@@ -167,6 +145,7 @@ export default function ContactSection() {
               required
               rows={5}
               placeholder="Type your message here..."
+              aria-label="Message"
               className="w-full bg-black/30 px-4 py-3 rounded-xl border border-white/20 placeholder-white text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -186,8 +165,15 @@ export default function ContactSection() {
             >
               Send Message
             </motion.button>
+
+            {formStatus === "success" && (
+              <p className="text-green-400 text-sm mt-4">
+                Thanks! I will reply shortly 👋
+              </p>
+            )}
           </form>
 
+          {/* Cat Illustration */}
           <Image
             src="/images/cat-peek.png"
             alt="Peeking cat illustration"
@@ -197,6 +183,6 @@ export default function ContactSection() {
           />
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

@@ -2,8 +2,9 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
+import { yieldToMain } from "@/app/utils/yield";
 
 const timeline = [
   {
@@ -41,9 +42,24 @@ export default function AboutSection() {
     ["#3b82f6", "#ef4444"]
   );
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [hydratedTimeline, setHydratedTimeline] = useState<typeof timeline>([]);
+
+
+  useEffect(() => {
+    const hydrateTimeline = async () => {
+      const items: typeof timeline = [];
+      for (const item of timeline) {
+        items.push(item);
+        setHydratedTimeline([...items]); // progressive rendering
+        await yieldToMain(); // yield every item
+      }
+    };
+
+    hydrateTimeline();
+  }, []);
 
   return (
-    <section id="about" className="py-24 px-6 bg-black text-white">
+    <section id="about" className="py-24 px-6 text-white">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
         {/* Left: Image & Intro */}
         <motion.div
@@ -77,7 +93,7 @@ export default function AboutSection() {
           />
 
           <div className="pl-10 space-y-12">
-            {timeline.map((item, i) => (
+            {hydratedTimeline.map((item, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
@@ -86,25 +102,28 @@ export default function AboutSection() {
                 viewport={{ once: true }}
                 className="relative flex items-start gap-4"
               >
-                 <div className="hidden md:flex items-start gap-4">
-                {/* Dot on the line */}
-                <div className="absolute left-[-1.5px] top-1.5 w-3 h-3 rounded-full bg-white shadow-[0_0_10px_3px_#fff]" />
+                <div className="hidden md:flex items-start gap-4">
+                  {/* Dot on the line */}
+                  <div className="absolute left-[-1.5px] top-1.5 w-3 h-3 rounded-full bg-white shadow-[0_0_10px_3px_#fff]" />
 
-                {/* Content */}
-                <div className="ml-6">
-                  <h3 className="text-base font-semibold">{item.title}</h3>
-                  <p className="text-sm text-gray-400">{item.desc}</p>
-                </div>
+                  {/* Content */}
+                  <div className="ml-6">
+                    <h3 className="text-base font-semibold">{item.title}</h3>
+                    <p className="text-sm text-gray-400">{item.desc}</p>
+                  </div>
 
-                {/* Year */}
-                <div className="ml-auto text-xs text-gray-500 min-w-[50px] text-right">
-                  {item.year}
+                  {/* Year */}
+                  <div className="ml-auto text-xs text-gray-500 min-w-[50px] text-right">
+                    {item.year}
+                  </div>
                 </div>
-                </div>
-                 {/* Mobile Accordion */}
-                 <div
+                {/* Mobile Accordion */}
+                <div
                   className="md:hidden bg-white/10 backdrop-blur-md border border-white/10 p-4 rounded-xl"
                   onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                  role="button"
+                  aria-expanded={openIndex === i}
+                  aria-controls={`desc-${i}`}
                 >
                   <div className="flex justify-between items-center cursor-pointer gap-4">
                     <h3 className="text-sm font-semibold">{item.title}</h3>
@@ -129,3 +148,5 @@ export default function AboutSection() {
     </section>
   );
 }
+
+

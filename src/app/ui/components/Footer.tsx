@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-br from-indigo-900 to-black text-white py-10 px-4">
+    <footer className=" text-white py-10 px-4">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
         <div>
           <h4 className="font-bold text-lg">Enai Cathy</h4>

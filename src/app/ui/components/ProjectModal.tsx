@@ -3,10 +3,12 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
+import Image from "next/image";
 
 interface Project {
   title: string;
   description: string;
+  content: string;
   image: string;
   tags: string[];
   featured?: boolean;
@@ -44,13 +46,16 @@ export default function ProjectModal({
             <X size={20} />
           </button>
 
-          <img
+          <Image
             src={project.image}
             alt={project.title}
+            width={400}
+            height={400}
             className="w-full rounded-lg mb-4"
           />
           <h2 className="text-2xl font-bold">{project.title}</h2>
           <p className="text-gray-300 mt-2">{project.description}</p>
+          <p className="text-gray-300 mt-2">{project.content}</p>
 
           <div className="flex flex-wrap gap-2 mt-4">
             {project.tags.map((tag) => (

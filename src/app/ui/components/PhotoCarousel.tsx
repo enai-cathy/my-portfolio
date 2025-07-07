@@ -1,6 +1,7 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
+import Image from "next/image";
 
 export default function PhotoCarousel() {
   const images = [1, 2, 3, 4, 5].map((n) => `/photos/photo${n}.jpg`);
@@ -18,10 +19,13 @@ export default function PhotoCarousel() {
     >
       {images.map((src, i) => (
         <SwiperSlide key={i}>
-          <img
+          <Image
             src={src}
             className="rounded-xl w-full h-64 object-cover"
+            width={200}
+            height={200}
             alt={`Photo ${i + 1}`}
+            loading="lazy"
           />
         </SwiperSlide>
       ))}

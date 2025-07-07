@@ -51,10 +51,10 @@ export default function FeaturedProject() {
           <ul className="text-sm text-gray-400 grid grid-cols-2 gap-2 mt-4">
             <li>🔧 Next.js & TypeScript</li>
             <li>🎨 Tailwind CSS</li>
-            <li>📦 Prisma + PostgreSQL</li>
+            <li>📦 PostgreSQL</li>
             <li>🎥 Framer Motion</li>
             <li>🚀 Vercel Hosted</li>
-            <li>🔐 Auth & RBAC</li>
+            <li>🔐 OpenAI & API </li>
           </ul>
 
           <div className="flex gap-4 mt-6">

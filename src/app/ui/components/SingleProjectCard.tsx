@@ -4,10 +4,12 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import ProjectModal from "./ProjectModal";
+import Image from "next/image";
 
 interface Project {
   title: string;
   description: string;
+  content: string;
   image: string;
   tags: string[];
   featured?: boolean;
@@ -24,9 +26,12 @@ export default function SingleProjectCard({ project }: { project: Project }) {
         whileHover={{ scale: 1.03 }}
         className="relative bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl overflow-hidden shadow-lg"
       >
-        <img
+        <Image
           src={project.image}
           alt={project.title}
+          width={400}
+          height={400}
+          fetchPriority="low"
           className="w-full h-48 object-cover"
         />
         <div className="p-4">
