@@ -73,13 +73,7 @@ export default function HomePage() {
             <ProjectCard />
           </section>
 
-          <section id="hobby" className="text-white px-4 py-20">
-            {/* <div className="max-w-6xl mx-auto space-y-20">
-            {/* PArt */}
-            {/* <h2 className="text-4xl text-black font-bold mb-6">Art</h2> */}
-            {/* <PhotoCarousel /> */}
-            {/* </div> */}
-          </section>
+      
           <section id="contact">
             <ContactSection />
           </section>

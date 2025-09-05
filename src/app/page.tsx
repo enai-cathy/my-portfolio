@@ -1,92 +1,67 @@
+// This is the main landing page of the portfolio website, showcasing hero section, projects, about, skills, and contact info.
 import AboutSection from "./ui/components/AboutSection";
 import ContactSection from "./ui/components/ContactSection";
 import FeaturedProject from "./ui/components/FeaturedProjects";
 import Navbar from "./ui/components/nav-bar";
-import PhotoCarousel from "./ui/components/PhotoCarousel";
-import ProjectCard from "./ui/components/ProjectCard";
 import Skills from "./ui/components/Skills";
 import SlideInSection from "./ui/SlideInSection";
 import Link from "next/link";
-import Image from "next/image";
+import ProjectsCard from "./ui/components/ProjectCard";
+
+
 
 export default function HomePage() {
   return (
     <>
       <Navbar />
-      <main
-        className="scroll-smooth text-white min-h-screen font-sans bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/bg-1.jpg')" }}
-      >
-        {/* Hero Section */}
-        <section
-          className=" bg-cover bg-center bg-no-repeat flex flex-col items-center text-center px-4 text-black"
-          style={{ backgroundImage: "url('/images/paper-bg.jpg')" }}
-        >
-          <div className="absolute  inset-0 bg-white/50 " />
-          <div className="relative z-10 flex flex-col min-h-screen gap-5 md:flex-row items-center">
-            <SlideInSection direction="left">
-              <div className="mt-20 w-full text-left">
-                <h1 className="text-5xl md:text-7xl font-extrabold leading-tight bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
-                  Ige-Edaba Enai C.
-                </h1>
-                <h2 className="text-xl text-gray-700 md:text-2xl mt-4 font-medium">
-                  SOFTWARE ENGINEER | FRONT-END DEVELOPER | VISUAL THINKER
-                </h2>
-                <p className="mt-6 text-lg text-gray-800 max-w-xl">
-                  Doctor turned technologist — building user-first,
-                  production-ready interfaces with React, TypeScript, and
-                  Next.js. Bridging design, empathy, and code for real-world
-                  impact.
-                </p>
-                <Link href="#projects">
-                  <button className="mt-6 px-6 py-1 bg-gradient-to-r from-red-600 via-purple-500 to-blue-700 text-white rounded-full hover:opacity-90 transition-all">
-                    View My Projects
-                  </button>
-                </Link>
-              </div>
-            </SlideInSection>
-            <SlideInSection direction="right">
-              <Image
-                src="/images/hero-image.jpeg"
-                alt="Enai front-end developer"
-                width={400}
-                height={400}
-                fetchPriority="high"
-                className="rounded-xl shadow"
-              />
-            </SlideInSection>
-          </div>
-        </section>
-        {/* Featured Section */}
-        <FeaturedProject />
-        {/* About Section */}
-        <section id="about" className="py-20 px-4 text-white">
-          <AboutSection />
-        </section>
-        {/* Skills Section */}
-        <section id="skills" className="py-24 px-4">
-          <Skills />
-        </section>
-        {/* Projects Section */}
-        <section id="projects" className="py-24 px-4 text-white">
-          <ProjectCard />
+      <main className="font-sans text-gray-900 ">
+        {/* Hero */}
+        <section className="min-h-[80vh] flex flex-col items-center justify-center text-center px-6">
+          <SlideInSection direction="left">
+            <h1 className="text-6xl sm:text-7xl font-bold mb-4">
+              Ige-Edaba Enaikato C.
+            </h1>
+            <p className="text-xl sm:text-2xl text-gray-600 mb-6 font-light">
+              SOFTWARE ENGINEER & VISUAL THINKER
+            </p>
+            <p className="text-base max-w-lg mx-auto text-gray-700 leading-relaxed">
+              I transform ideas into apps that work, backed by the precision of medicine and the creativity of code.
+              <br/>
+              {/* <strong> I build meaningful, production-ready
+              interfaces with React, TypeScript, and Next.js.</strong> */}
+            </p>
+            <Link href="/projects" className="inline-block mt-8 px-8 py-3 border border-gray-900 rounded-full text-sm tracking-wide hover:bg-black hover:text-white hover:border-white transition">
+                View My Work
+            </Link>
+          </SlideInSection>
+
         </section>
 
-        <section id="hobby" className="min-h-screen  text-white px-4 py-20">
-          <div className="max-w-6xl mx-auto space-y-20">
-            {/* PArt */}
-            <h2 className="text-4xl font-bold mb-6">Art</h2>
-            <PhotoCarousel />
-            <div>
-              <h2 className="text-4xl font-bold mb-6">Movies</h2>
-              <PhotoCarousel />
-            </div>
-          </div>
+        {/* Work Gallery */}
+        <section id="projects" className="py-16 px-6 max-w-5xl mx-auto">
+         
+            <FeaturedProject />
+          <ProjectsCard/>
+       
         </section>
-        <section id="contact">
+
+        {/* About & Skills */}
+        <section id="about" className="py-12 px-6 max-w-5xl mx-auto">
+          <AboutSection />
+        </section>
+        <section id="skills" className="py-12 px-6 max-w-5xl mx-auto">
+          <Skills />
+        </section>
+
+        {/* Contact */}
+        <section id="contact" className="py-16 px-6 max-w-5xl mx-auto">
+          <p className="text-center font-handwritten text-2xl">
+           Intentional products shape better experiences,<br/>let’s craft the next one together.
+          </p>
           <ContactSection />
         </section>
       </main>
+   
     </>
   );
 }
