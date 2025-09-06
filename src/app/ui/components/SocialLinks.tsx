@@ -10,7 +10,7 @@ const socialLinks = [
 
 export default function SocialLinks() {
   return (
-    <div className="flex justify-center md:justify-start gap-6 text-lg">
+    <div className="flex justify-center md:justify-start gap-4 text-lg">
       {socialLinks.map((link) => {
         const Icon = link.icon;
         return (
@@ -22,7 +22,7 @@ export default function SocialLinks() {
             title={link.label}
             className="hover:text-purple-400 transition"
           >
-            <Icon size={20} />
+            <Icon size={15} />
           </Link>
         );
       })}

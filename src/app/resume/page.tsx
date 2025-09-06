@@ -9,7 +9,7 @@ const ResumePage: React.FC = () => {
   const fullUrl = "/Enaikato Ige-Edaba Frontend and UI developer.pdf"; // replace with your full PDF
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center  p-6">
+    <div className="min-h-screen flex flex-col items-center justify-center text-gray-600 p-6">
       <h1 className="text-3xl font-bold mb-6 text-center">My Resume</h1>
 
       <div className="flex gap-4 mb-6">

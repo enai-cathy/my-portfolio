@@ -7,6 +7,7 @@ import Skills from "./ui/components/Skills";
 import SlideInSection from "./ui/SlideInSection";
 import Link from "next/link";
 import ProjectsCard from "./ui/components/ProjectCard";
+import ContactButton from "./ui/components/ContactButton";
 
 
 
@@ -22,7 +23,7 @@ export default function HomePage() {
               Ige-Edaba Enaikato C.
             </h1>
             <p className="text-xl sm:text-2xl text-gray-600 mb-6 font-light">
-              SOFTWARE ENGINEER & VISUAL THINKER
+             FRONTEND DEVELOPER - VISUAL THINKER
             </p>
             <p className="text-base max-w-lg mx-auto text-gray-700 leading-relaxed">
               I transform ideas into apps that work, backed by the precision of medicine and the creativity of code.
@@ -30,9 +31,12 @@ export default function HomePage() {
               {/* <strong> I build meaningful, production-ready
               interfaces with React, TypeScript, and Next.js.</strong> */}
             </p>
-            <Link href="/projects" className="inline-block mt-8 px-8 py-3 border border-gray-900 rounded-full text-sm tracking-wide hover:bg-black hover:text-white hover:border-white transition">
+            <div className=" flex justify-center mt-4 gap-4">
+            <Link href="/projects"  className="px-5 py-2 text-sm font-semibold border border-black rounded-full hover:opacity-90 transition">
                 View My Work
             </Link>
+            <ContactButton/>
+            </div>
           </SlideInSection>
 
         </section>
@@ -58,7 +62,9 @@ export default function HomePage() {
           <p className="text-center font-handwritten text-2xl">
            Intentional products shape better experiences,<br/>let’s craft the next one together.
           </p>
-          <ContactSection />
+          <div className="flex justify-center mt-6">
+          <ContactButton />
+          </div>
         </section>
       </main>
    
