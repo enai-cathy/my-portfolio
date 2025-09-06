@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import NavLinks from "@/app/ui/nav-links";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import ContactButton from "./ContactButton";
+
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -87,9 +87,7 @@ const Navbar = () => {
                 About
               </Link>
             </li>
-            {/* <li>
-             <ContactButton />
-            </li> */}
+          
           </ul>
         </div>
       )}

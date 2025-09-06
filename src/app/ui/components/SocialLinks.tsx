@@ -10,7 +10,7 @@ const socialLinks = [
 
 export default function SocialLinks() {
   return (
-    <div className="flex justify-center md:justify-start gap-4 text-lg">
+    <div className="flex justify-center md:justify-start gap-4 text-gray-600 text-lg">
       {socialLinks.map((link) => {
         const Icon = link.icon;
         return (
