@@ -64,7 +64,7 @@ Backline creates a <strong> trustworthy experience </strong>where bettors can ma
           <div className="flex gap-4 mt-6">
             <a
               href="https://backline-dashboard.vercel.app/" target="_blank" 
-              className="px-5 py-2 text-sm font-semibold bg-gradient-to-r from-purple-200 to-pink-300 rounded-full hover:opacity-90 transition"
+              className="px-5 py-2 text-sm font-semibold bg-black text-white rounded-full hover:opacity-90 transition"
             >
               Live Demo
             </a>

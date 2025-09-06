@@ -27,7 +27,7 @@ export const projects = [
         heading: "The Solution",
         content:
           "Backline delivers data made simple: interactive visualizations, smart insights, mobile-first design, and community engagement.",
-        images: ["/images/backline/1.png", "/images/backline-mobile.png"],
+        images: ["/images/backline/1.png", "/images/backline/thumb.png"],
       },
       {
         heading: "Process",
@@ -176,7 +176,7 @@ export const projects = [
         heading: "The Solution",
         content:
           "Mint Mogul offers actionable financial templates, ebooks, and smart tools like savings calculators, investment forecasts, and budget planners. It blends luxury branding with a clean, modern design to resonate with high spenders.",
-        images: ["/images/mintmogul/7.png", "/images/mintmogul/8.png"],
+        images: ["/images/mint-mogul/7.png", "/images/mint-mogul/8.png"],
       },
       {
         heading: "Process",
@@ -195,7 +195,7 @@ export const projects = [
       {
         heading: "Preview",
         content: "https://mintmogul.vercel.app/",
-       images: ["/images/mintmogul/tools.png", "/images/mintmogul/1.png", "/images/mintmogul/2.png", "/images/mintmogul/3.png", "/images/mintmogul/4.png", "/images/mintmogul/products.png", "/images/mintmogul/5.png", "/images/mintmogul/6.png", "/images/mintmogul/7.png", "/images/mintmogul/8.png", "/images/mintmogul/9.png"],
+       images: ["/images/mint-mogul/1.png", "/images/mint-mogul/2.png", "/images/mint-mogul/3.png", "/images/mint-mogul/4.png", "/images/mint-mogul/5.png", "/images/mint-mogul/6.png", "/images/mint-mogul/7.png", "/images/mint-mogul/8.png", "/images/mint-mogul/9.png"],
       },
   ],
 }

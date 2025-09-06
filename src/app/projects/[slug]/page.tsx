@@ -69,6 +69,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           src={project.cover}
           alt={project.title}
           width={800}
+          height={420}
           className="w-full h-[420px] object-cover rounded-3xl shadow-lg"
         />
       </motion.div>
@@ -95,6 +96,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     key={idx}
                     src={src}
                     width={600}
+                    height={400}
                     alt={`${section.heading} ${idx}`}
                     className="rounded-2xl shadow-md hover:shadow-xl hover:scale-200 transition"
                   />

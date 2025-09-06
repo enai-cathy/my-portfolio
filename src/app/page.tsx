@@ -1,6 +1,5 @@
 // This is the main landing page of the portfolio website, showcasing hero section, projects, about, skills, and contact info.
 import AboutSection from "./ui/components/AboutSection";
-import ContactSection from "./ui/components/ContactSection";
 import FeaturedProject from "./ui/components/FeaturedProjects";
 import Navbar from "./ui/components/nav-bar";
 import Skills from "./ui/components/Skills";

@@ -176,7 +176,7 @@ const SkillsSection = () => {
       </div>
        <div className="max-w-4xl mx-auto mt-10">
         <h3 className="text-2xl font-semibold mb-6 text-center">Soft Skills</h3>
-        <ul className="grid grid-cols-1 sm:grid-cols-1 gap-4 text-md text-gray-600 list-disc list-inside px-4">
+        <ul className="grid grid-cols-1 sm:grid-cols-1 gap-4 text-md text-gray-600 text-center px-4">
           {softSkills.map((skill, i) => (
             <motion.li
               key={i}
