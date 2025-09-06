@@ -2,7 +2,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+// import Image from "next/image";
 
 
 
@@ -12,13 +12,13 @@ export default function AboutSection() {
     <section id="about" className="px-6 text-gray-700">
       <div className="flex max-w-6xl gap-12  justify-center ">
         {/* Left: Image & Intro */}
-        <Image
+        {/* <Image
           src="/images/hero-image.jpg"
           alt="Enai Dev"  
           width={200}
           height={200}
           className="rounded-full mx-auto md:mx-0"
-        />
+        /> */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}

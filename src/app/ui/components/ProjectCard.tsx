@@ -79,7 +79,7 @@ export default function ProjectsPage() {
                 height={400}
                 className="w-full h-48 sm:h-64 lg:h-80 object-cover rounded-2xl shadow-lg group-hover:scale-102 hover:shadow-xl transition-transform"
               />
-              <h2 className="mt-4 text-2xl font-semibold">{project.title}</h2>
+              <h2 className="mt-4 text-gray-700 text-2xl font-semibold">{project.title}</h2>
               <p className="text-gray-500">{project.description}</p>
             </div>
           </Link>

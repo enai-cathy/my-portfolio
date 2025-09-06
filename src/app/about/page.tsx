@@ -10,7 +10,7 @@ export default function AboutSection() {
       <div className="max-w-6xl mx-auto min-h-screen gap-12 items-start">
         {/* Left: Image & Intro */}
         <Image 
-        src="/profile.jpg" 
+        src="/images/hero-image.jpg" 
         alt="Profile Picture" 
         width={200} 
         height={200} 

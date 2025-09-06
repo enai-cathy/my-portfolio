@@ -36,7 +36,7 @@ const Navbar = () => {
         <div className="text-gray-700 font-bold text-xl">Enai.dev</div>
 
         {/* Center: Imported NavLinks (desktop) */}
-        <div className="hidden md:flex">
+        <div className="hidden text-gray-600 md:flex">
           <NavLinks />
         </div>
 
@@ -52,7 +52,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white px-6 py-6 space-y-4 animate-slide-down shadow-md">
+        <div className="md:hidden text-gray-600 bg-white px-6 py-6 space-y-4 animate-slide-down shadow-md">
           <ul className="space-y-3 text-lg font-medium">
             <li>
               <Link
