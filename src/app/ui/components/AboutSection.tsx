@@ -12,7 +12,7 @@ export default function AboutSection() {
     <section id="about" className="px-6 text-gray-700">
       <div className="flex max-w-6xl gap-12  justify-center ">
         {/* Left: Image & Intro */}
-        <img
+        <Image
           src="/images/hero-image.jpg"
           alt="Enai Dev"  
           width={200}
